@@ -4,10 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Reminder: Your Ticket is Due Soon</h1>
-    <p>Hi <%= @user.name %>,</p>
-    <p>This is a reminder that the ticket "<strong><%= @ticket.title %></strong>" is due on <%= @ticket.due_date %>.</p>
-    <p>Please review it as soon as possible.</p>
-    <p>Thanks,<br/>Your Team</p>
+    <h1><%= t("user_mailer.reminder_email.subject") %></h1>
+    <p><%= t("user_mailer.reminder_email.greeting", name: @user.name) %></p>
+    <p><%= t("user_mailer.reminder_email.body_html", title: @ticket.title, due_date: @ticket.due_date) %></p>
+    <p><%= t("user_mailer.reminder_email.review") %></p>
+    <p><%= t("user_mailer.reminder_email.thanks") %><br/><%= t("user_mailer.reminder_email.team") %></p>
   </body>
 </html>
