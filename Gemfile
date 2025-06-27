@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.0.2"
+# gem "rails", "~> 8.0.2"
+gem "rails", "~> 7.1.2"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
@@ -38,7 +39,8 @@ gem 'bcrypt'            # for password hashing
 gem 'rack-cors'         # for handling CORS
 gem 'jwt'               # for token-based auth
 gem 'rspec-rails'       # for testing
-gem 'sidekiq'
+gem 'sidekiq', '~> 7.2'
+gem 'sidekiq-scheduler'
 
 
 group :development, :test do
