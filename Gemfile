@@ -38,6 +38,7 @@ gem 'bcrypt'            # for password hashing
 gem 'rack-cors'         # for handling CORS
 gem 'jwt'               # for token-based auth
 gem 'rspec-rails'       # for testing
+gem 'sidekiq'
 
 
 group :development, :test do
@@ -49,4 +50,6 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+  gem 'faker'
+  gem 'dotenv-rails'
 end

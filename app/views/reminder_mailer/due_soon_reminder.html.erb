@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reminder: Your Ticket is Due Soon</h1>
+    <p>Hi <%= @user.name %>,</p>
+    <p>This is a reminder that the ticket "<strong><%= @ticket.title %></strong>" is due on <%= @ticket.due_date %>.</p>
+    <p>Please review it as soon as possible.</p>
+    <p>Thanks,<br/>Your Team</p>
+  </body>
+</html>
