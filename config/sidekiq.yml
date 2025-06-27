@@ -1,5 +1,4 @@
-:schedule:
-  send_due_date_reminders:
-    cron: "* * * * *" # every minute
-    class: "SendDueDateRemindersJob"
-    queue: default
+send_due_date_reminders:
+  cron: "* * * * *" # every minute
+  class: "SendDueDateRemindersJob"
+  queue: default
