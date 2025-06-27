@@ -1,4 +1,4 @@
-class UsersTable < ActiveRecord::Migration[8.0]
+class UsersTable < ActiveRecord::Migration[7.1]
   def up
     create_table :users do |t|
       t.string :name

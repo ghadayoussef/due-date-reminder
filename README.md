@@ -34,8 +34,8 @@ in another terminal run:
 1 - Via api: go to this url http://localhost:4000/api/v1/reminders/trigger in postman and set the method to POST
 2 - Via sidekiq scheduler:
 
-    in config/initializers/sidekiq.rb 
-    uncomment line 11: # Sidekiq.schedule = YAML.load_file(schedule_file)
+    in config/sidekiq_test.yml
+    rename sidekiq_test.yml to sidekiq.yml
 
     and
 
@@ -44,6 +44,10 @@ in another terminal run:
     if repeat
       self.class.set(wait: 1.minute).perform_later(repeat: true)
     end
+
+* to run the rspec 
+1 - run bundle exec sidekiq in a terminal
+2 - and run bundle exec rspec in another terminal 
 
 
 

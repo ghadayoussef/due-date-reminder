@@ -1,4 +1,4 @@
-class TicketsTable < ActiveRecord::Migration[8.0]
+class TicketsTable < ActiveRecord::Migration[7.1]
   def up
     create_table :tickets do |t|
       t.string :title

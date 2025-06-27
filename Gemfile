@@ -38,7 +38,6 @@ gem "thruster", require: false
 gem 'bcrypt'            # for password hashing
 gem 'rack-cors'         # for handling CORS
 gem 'jwt'               # for token-based auth
-gem 'rspec-rails'       # for testing
 gem 'sidekiq', '~> 7.2'
 gem 'sidekiq-scheduler'
 
@@ -54,4 +53,5 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem 'faker'
   gem 'dotenv-rails'
+  gem 'rspec-rails'
 end
