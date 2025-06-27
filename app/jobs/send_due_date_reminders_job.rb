@@ -1,7 +1,7 @@
 class SendDueDateRemindersJob < ApplicationJob
   queue_as :default
 
-  def perform
+  def perform(repeat = false)
     Rails.logger.info "[SendDueDateRemindersJob] Triggered by Sidekiq schedule"
     User.where(send_due_date_reminder: true).find_each do |user|
       Time.use_zone(user.time_zone) do
@@ -18,6 +18,11 @@ class SendDueDateRemindersJob < ApplicationJob
           PushNotificationService.send_due_reminder(user, ticket)
         end
       end
+    end
+    # used if you are triggering the SendDueDateRemindersJob from the trigger action in reminders_controller.rb
+    # comment this condition if sidekiq_scheduler is calling SendDueDateRemindersJob
+    if repeat
+      self.class.set(wait: 1.minute).perform_later(repeat: true)
     end
   end
 end

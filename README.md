@@ -12,18 +12,38 @@ Steps to run the project:
 
 * bundle install
 
-* rails db:setup
+* rails db:setup or (rails db:create then rails db:migrate then rails db:seed)
 
-* rails db:seed
-
+in a terminal run:
 * rails server
 
-* to test the emails manually and immediately run rails c and choose a user from the database having 
+in another terminal run:
+* bundle exec sidekiq
+
+* Make sue there is at least a user from the database having 
 - send_due_date_reminder set to true
 - time_zone matching your time zone (example: Africa/Cairo)
-- due_date_reminder_time set to the current_time of utc (example: 12:27:00 is equivalent to 15:27:00 for cairo time)
-- due_date_reminder_interval set to 0 (so yu can recieve the emails immediately)
-- make sure the tickets table has one or more record with assigned_user_id = your selected user and due_date must be the current day (example: 2025-06-27)
-- in rails c run: SendDueDateRemindersJob.perform_now the emails will arrive immediately
+- due_date_reminder_time set to the current_time or greater of utc (example: 12:27:00 is equivalent to 15:27:00 for cairo time)
+- due_date_reminder_interval set to 0 (so you can recieve the emails within the current day)
+- make sure the tickets table has one or more record with assigned_user_id = your selected user and due_date must be the current day (example:
+2025-06-27)
+
+* to test the emails manually and immediately run rails c and SendDueDateRemindersJob.perform_now the emails will arrive immediately
+
+* to test the scheduled email you have two approaches: 
+1 - Via api: go to this url http://localhost:4000/api/v1/reminders/trigger in postman and set the method to POST
+2 - Via sidekiq scheduler:
+
+    in config/initializers/sidekiq.rb 
+    uncomment line 11: # Sidekiq.schedule = YAML.load_file(schedule_file)
+
+    and
+
+    in app/job/send_due_date_reminders_job.rb
+    comment line 24 to 26
+    if repeat
+      self.class.set(wait: 1.minute).perform_later(repeat: true)
+    end
+
 
 
