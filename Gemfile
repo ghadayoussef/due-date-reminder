@@ -38,7 +38,7 @@ gem "thruster", require: false
 gem 'bcrypt'            # for password hashing
 gem 'rack-cors'         # for handling CORS
 gem 'jwt'               # for token-based auth
-gem 'sidekiq', '~> 7.2'
+gem 'sidekiq', '~> 8.0'
 gem 'sidekiq-scheduler'
 
 
